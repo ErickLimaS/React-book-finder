@@ -30,7 +30,7 @@ export const Home = () => {
         console.log(aux + '- length')
         let i = 0;
         while (i < aux) {
-            storage[i] = value.data.items[i].volumeInfo;
+            storage[i] = value.data.items[i]; //book details
             console.log(storage);
             i++;
             console.log(i);
@@ -47,7 +47,7 @@ export const Home = () => {
         })
     }
 
-    //get State Search, call a function to attach to base_url and get the book list
+    //get State Search and call a function to attach it to base_url and get the book list
     async function searchBook() {
         //botar ERRO se Search tiver vazio 
         const data = await basicFetch(state.search)
@@ -87,7 +87,6 @@ export const Home = () => {
                             </Col>
                         </Row>
                     </Form>
-                    {state.search}
                 </div>
 
             </C.Container>
@@ -96,7 +95,6 @@ export const Home = () => {
                 <Row className='list-search-books'>
                     {bookList.map((item, key) => (
                         <SearchBooks key={key} item={item} />
-
                     ))}
                 </Row>
             </C.Container>
