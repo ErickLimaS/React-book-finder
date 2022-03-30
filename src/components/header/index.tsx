@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="/">Book Finder</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className='me-auto'>
@@ -15,11 +15,11 @@ export const Header = () => {
                     <Form className="d-flex">
                         <FormControl
                             type="search"
-                            placeholder="Search"
+                            placeholder="Procurar..."
                             className="me-2"
-                            aria-label="Search"
+                            aria-label="Procurar..."
                         />
-                        <Button variant="outline-success" >Search</Button>
+                        <Button variant="outline-success" >Procurar</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

@@ -55,52 +55,51 @@ export const Home = () => {
     }
 
     return (
-        <C.Container style={{
-            backgroundImage: `url(${background})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-        }
-        }>
-            <div className='main-search-book'>
-                <h1>Book Finder</h1>
-                <hr />
-                <Form>
-                    <Row className="align-items-center">
-                        <Col xs="auto">
-                            <Form.Label htmlFor="inlineFormInputBookName" visuallyHidden>
-                                Book Name
-                            </Form.Label>
-                            <Form.Control
-                                onChange={handleSearch}
-                                className="mb-2"
-                                id="inlineFormInputBookName"
-                                placeholder="Ex: Harry Potter"
+        <>
+            <C.Container style={
+                {
+                    backgroundImage: `url(${background})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }
+            }>
+                <div className='main-search-book'>
+                    <h1>Book Finder</h1>
+                    <hr />
+                    <Form>
+                        <Row className="align-items-center">
+                            <Col xs="auto">
+                                <Form.Label htmlFor="inlineFormInputBookName" visuallyHidden>
+                                    Book Name
+                                </Form.Label>
+                                <Form.Control
+                                    onChange={handleSearch}
+                                    className="mb-2"
+                                    id="inlineFormInputBookName"
+                                    placeholder="Ex: Harry Potter"
 
-                            />
-                        </Col>
-                        <Col xs="auto">
-                            <Button type="button" className="mb-2" onClick={searchBook}>
-                                Procurar
-                            </Button>
-                        </Col>
-                    </Row>
-                </Form>
-                {state.search}
-            </div>
+                                />
+                            </Col>
+                            <Col xs="auto">
+                                <Button type="button" className="mb-2" onClick={searchBook}>
+                                    Procurar
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Form>
+                    {state.search}
+                </div>
 
-            <hr />
-            <Container>
-                <Row>
+            </C.Container>
+
+            <C.Container>
+                <Row className='list-search-books'>
                     {bookList.map((item, key) => (
                         <SearchBooks key={key} item={item} />
 
                     ))}
                 </Row>
-            </Container>
-            <div>
-                <hr />
-
-            </div>
-        </C.Container>
+            </C.Container>
+        </>
     );
 }

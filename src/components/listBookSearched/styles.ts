@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    width: 350px;
+    width: 333px;
     background-color: #ffff;
-    padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,9 +27,31 @@ export const Container = styled.div`
 
     .div-buttons *{
         margin: 0 20px;
-        background-color: #000;
         border-radius: 4px;
         padding: 10px;
+    }
+
+    .button-know {
+        color: black;
+        border: 1px solid black;
+        background-color: transparent;
+    }
+
+    .button-know:hover{
+        
+        background-color: #cfcfcf;
+    }
+
+    .button-want {
+        color: black;
+        border: 1px solid black;
+        background-color: #00ff2b8f;
+    }
+    
+    .button-want:hover{
+        color: white;
+        border: 1px solid rgb(0 165 28);
+        background-color: #00e126;
     }
     
     h2 {

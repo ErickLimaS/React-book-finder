@@ -1,6 +1,6 @@
 import React from "react";
 import * as C from './styles'
-import { Col } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({ item }) => {
@@ -10,11 +10,13 @@ export default ({ item }) => {
                 <div className="img-title">
                     <div className="div-img" style={{
                         backgroundImage: `url(${item.imageLinks.thumbnail})`,
-                        backgroundSize: 'cover',
+                        backgroundSize: '100%',
+                        backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
-                        width: '128px',
+                        width: '148px',
                         height: '192px'
-                    }}></div>
+                    }}>
+                    </div>
                     <div className="div-title">
                         <h2>{item.title}</h2>
                         {/* <p className="book-details">Descricao: {item.description} Ler Mais...</p> */}
@@ -27,11 +29,11 @@ export default ({ item }) => {
                 {/* <p className="book-details">Editora: {item.publisher}</p> */}
                 {/* <p className="book-details">Categoria: {item.categories}</p> */}
                 <div className="div-buttons">
-                    <a href={item.infoLink} target="_blank" rel="noreferrer">Saber Mais</a>
-                    <a href={item.infoLink} target="_blank" rel="noreferrer">Quero esse!</a>
+                    <Button href='/book' rel="noreferrer" variant='primary' className="button-know">Saber Mais</Button>
+                    <Button href={item.infoLink} target="_blank" variant='secondary' className="button-want">Quero esse!</Button>
                 </div>
                 <hr />
             </C.Container>
-        </Col>
+        </Col >
     )
 }
