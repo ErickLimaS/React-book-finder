@@ -6,9 +6,9 @@ import { Footer } from './components/footer';
 const App = () => {
   return (
     <FormProvider>
-      <Header />
+      {/* <Header /> */}
       <Router />
-      <Footer />
+      {/* <Footer /> */}
     </FormProvider>
   );
 }
