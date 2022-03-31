@@ -12,8 +12,9 @@ type State = {
     categories: any,
     pageCount: number,
     buyLink: any,
-    id: any, //use to get cover art
-    author: any
+    id: any, //used to get cover art
+    author: any,
+    language: any
 }
 
 type Action = {
@@ -42,11 +43,11 @@ const initialData: State = {
     pageCount: 0,
     buyLink: '',
     id: '',
-    author: ''
+    author: '',
+    language: ''
 };
 
 // context
-
 const FormContext = createContext<ContextType | undefined>(undefined);
 
 //reducer
@@ -62,7 +63,8 @@ export enum FormActions {
     setPageCount,
     setBuyLink,
     setId,
-    setAuthor
+    setAuthor,
+    setLanguage
 };
 
 const formReducer = (state: State, action: Action) => {
@@ -91,6 +93,8 @@ const formReducer = (state: State, action: Action) => {
             return { ...state, id: action.payload };
         case FormActions.setAuthor:
             return { ...state, author: action.payload };
+        case FormActions.setLanguage:
+            return { ...state, language: action.payload };
 
         default:
             return state;

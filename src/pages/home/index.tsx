@@ -22,7 +22,6 @@ export const Home = () => {
 
     //get the books with correspondent url 
 
-    /*  GET AUTHOR, Published Date, Picture, etc*/
     function getInicialProps(value: any) {
         console.log(value)
         const aux = value.data.items.length

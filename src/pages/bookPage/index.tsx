@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "../../context/FormContext";
 import * as C from './styles'
-import { Book, CalendarEvent, Tag } from 'react-bootstrap-icons'
+import { Book, CalendarEvent, Tag, Type } from 'react-bootstrap-icons'
 
 export const BookPage = () => {
     const { state } = useForm();
@@ -9,7 +9,8 @@ export const BookPage = () => {
     const imgBook = `http://books.google.com/books/content?id=${state.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
     let date = new Date(state.date)
-    console.log(date)
+
+    const language = (state.language).toUpperCase()
 
     return (
         <C.Container>
@@ -45,17 +46,22 @@ export const BookPage = () => {
                     <div>
                         <Book size={30} />
                         <p><b>Páginas</b></p>
-                        <p>{state.pageCount}</p> 
+                        <p>{state.pageCount}</p>
                     </div>
                     <div>
                         <CalendarEvent size={30} />
-                        <p><b>Data de Lançamento</b></p>
+                        <p><b>Lançamento</b></p>
                         <p>{date.getFullYear()}</p>
                     </div>
                     <div>
                         <Tag size={30} />
-                        <p><b>Categoria</b></p> 
+                        <p><b>Categoria</b></p>
                         <p>{state.categories}</p>
+                    </div>
+                    <div>
+                        <Type size={30} />
+                        <p><b>Idioma</b></p>
+                        <p>{language}</p>
                     </div>
                 </div>
             </div>

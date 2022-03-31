@@ -13,6 +13,12 @@ export default ({ item }: Props) => {
     const navigate = useNavigate();
     const { state, dispatch } = useForm();
 
+    //string language to upper case
+    const language = item.volumeInfo.language.toUpperCase()
+
+    //shows year of publishing
+    let date = new Date(item.volumeInfo.publishedDate)
+
     return (
 
         <Col className="col-md-4">
@@ -27,15 +33,14 @@ export default ({ item }: Props) => {
                     }} />
                     <div className="div-title">
                         <h2>{item.volumeInfo.title}</h2>
-                        {/* <p className="book-details">Descricao: {item.description} Ler Mais...</p> */}
                         <p className="author-name">Por <span>{item.volumeInfo.authors}</span></p>
                     </div>
                 </div>
                 <div className="book-details">
-                    {/* <p><span>Descrição:</span> Ler Mais...</p> */}
-                    <p><span>Lancamento:</span> {item.volumeInfo.publishedDate}</p>
+                    <p><span>Ano de Lançamento:</span> {date.getFullYear()}</p>
                     <p><span>Editora:</span> {item.volumeInfo.publisher}</p>
                     <p><span>Categoria:</span> {item.volumeInfo.categories}</p>
+                    <p><span>Idioma:</span> {language}</p>
                 </div>
                 <div className="div-buttons">
                     {/* takes state SEARCH and ISBN data to the next page*/}
@@ -84,6 +89,10 @@ export default ({ item }: Props) => {
                             dispatch({
                                 type: FormActions.setAuthor,
                                 payload: item.volumeInfo.authors
+                            });
+                            dispatch({
+                                type: FormActions.setLanguage,
+                                payload: item.volumeInfo.language
                             });
                             console.log(state.isbn)
                             navigate('/book')

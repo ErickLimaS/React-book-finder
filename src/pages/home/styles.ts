@@ -31,4 +31,5 @@ export const Container = styled.div`
     .list-search-books {
         margin: 0 50px;
     }
-    `
+    
+`
