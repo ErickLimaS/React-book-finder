@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    width: 333px;
     background-color: #ffff;
     display: flex;
     flex-direction: column;
@@ -16,12 +15,18 @@ export const Container = styled.div`
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        border-bottom: 1px solid rgb(207, 207, 207);
 
         .div-img {
             margin: 10px;
         }
         .div-title {
-            margin: 0 20px; 
+            width: 50%;
+            margin: 0 20px;
+
+            .author-name span{
+                font-weight: 600;
+            }
         }
     }
 
@@ -59,10 +64,18 @@ export const Container = styled.div`
         font-size: 26px;
     }
 
-    p.book-details {
-        border-bottom: 1px solid black;
+    .book-details {
+        margin: 20px;
+        align-self: flex-start;
+
+        span {
+            font-weight: 600;
+        }
     }
 
+`
 
+export const Img = styled.div < { item: any }> `
 
+    background-image: url(${props => props.item.volumeInfo.imageLinks !== undefined ? props.item.volumeInfo.imageLinks.thumbnail : 'https://freepikpsd.com/file/2019/10/image-not-available-png-2-Transparent-Images-Free.png'});
 `

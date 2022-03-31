@@ -4,36 +4,39 @@ import { Button, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FormActions, useForm } from "../../context/FormContext";
 
+type Props = {
+    item: any,
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({ item }) => {
+export default ({ item }: Props) => {
     const navigate = useNavigate();
     const { state, dispatch } = useForm();
 
     return (
 
-        <Col>
+        <Col className="col-md-4">
             <C.Container>
                 <div className="img-title">
-                    <div className="div-img" style={{
-                        backgroundImage: `url(${item.volumeInfo.imageLinks.thumbnail})`,
+                    <C.Img item={item} className="div-img" style={{
                         backgroundSize: '100%',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
                         width: '148px',
                         height: '192px'
-                    }}>
-                    </div>
+                    }} />
                     <div className="div-title">
-                        <h2>{item.title}</h2>
+                        <h2>{item.volumeInfo.title}</h2>
                         {/* <p className="book-details">Descricao: {item.description} Ler Mais...</p> */}
-                        <p className="">Author: {item.volumeInfo.authors}</p>
+                        <p className="author-name">Por <span>{item.volumeInfo.authors}</span></p>
                     </div>
                 </div>
-                <p className="book-details">Descricao: Ler Mais...</p>
-                <p className="book-details">{item.volumeInfo.pageCount} Páginas</p>
-                <p className="book-details">Lancamento: {item.volumeInfo.publishedDate}</p>
-                {/* <p className="book-details">Editora: {item.publisher}</p> */}
-                {/* <p className="book-details">Categoria: {item.categories}</p> */}
+                <div className="book-details">
+                    {/* <p><span>Descrição:</span> Ler Mais...</p> */}
+                    <p><span>Lancamento:</span> {item.volumeInfo.publishedDate}</p>
+                    <p><span>Editora:</span> {item.volumeInfo.publisher}</p>
+                    <p><span>Categoria:</span> {item.volumeInfo.categories}</p>
+                </div>
                 <div className="div-buttons">
                     {/* takes state SEARCH and ISBN data to the next page*/}
                     <Button variant='primary' className="button-know" onClick={
