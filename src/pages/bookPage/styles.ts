@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-// box-shadow: inset 0px 20px 20px 0px;
 export const Container = styled.div`
 
     display: flex;
@@ -32,8 +31,8 @@ export const Container = styled.div`
             margin: 20px 0 10px 0;
         }
 
-        h2 {
-            font-size: 34px;
+        div p span {
+            font-weight: 600;
         }
 
         .buy-button{
@@ -74,4 +73,13 @@ export const Container = styled.div`
         }
     }
 }
+`
+export const Price = styled.h2<{ price: any }>`
+
+    font-size: 32px;
+
+    small {
+        display: ${props => props.price === 'Preço Indisponível' ? 'none' : 'initial'}
+    }
+
 `

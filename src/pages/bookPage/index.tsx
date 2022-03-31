@@ -3,9 +3,18 @@ import { useForm } from "../../context/FormContext";
 import * as C from './styles'
 import { Book, CalendarEvent, Tag, Type } from 'react-bootstrap-icons'
 
-export const BookPage = () => {
-    const { state } = useForm();
+type Props = {
+    price: any;
+}
 
+
+export const BookPage = ({ price }: Props) => {
+    const { state } = useForm();
+    
+    //makes price with ',' instead of '.'
+    price  = (state.price)
+    var priceFormated = price.replace(".",",");
+    
     const imgBook = `http://books.google.com/books/content?id=${state.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
     let date = new Date(state.date)
@@ -28,10 +37,10 @@ export const BookPage = () => {
                 <div className="all-Book-Info">
                     <div>
                         <h1>{state.title}</h1>
-                        <p>Por {state.author}</p>
+                        <p>Por <span>{state.author}</span></p>
                     </div>
                     <hr />
-                    <h2>{state.price} <small>na Google Play</small></h2>
+                    <C.Price price={price}>{priceFormated} <small>na Google Play</small></C.Price>
                     <div className="buy-button">
                         <Button href={state.buyLink} target='_blank' rel='noreferrer'>Comprar Agora</Button>
                     </div>
@@ -39,7 +48,7 @@ export const BookPage = () => {
             </div>
             <hr />
             <div className="all-details">
-                <h3><b>Descrição</b>:</h3>
+                <h3><b>Descrição</b></h3>
                 <p className="description">{state.description}</p>
                 <hr />
                 <div className="book-details">

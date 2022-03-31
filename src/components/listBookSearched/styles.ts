@@ -8,7 +8,7 @@ export const Container = styled.div`
     align-items: center;
     margin: 10px 0;
     border-radius: 8px;
-    box-shadow: 0px 0px 9px 3px;
+    box-shadow: 0px 0px 9px 3px #38383873;
 
     div.img-title{
         display: flex;

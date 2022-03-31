@@ -62,10 +62,18 @@ export default ({ item }: Props) => {
                                 type: FormActions.setPublisher,
                                 payload: item.volumeInfo.publisher
                             });
-                            dispatch({
-                                type: FormActions.setPrice,
-                                payload: `R$ ${item.saleInfo.listPrice.amount}`
-                            });
+                            if (item.saleInfo.listPrice !== undefined) {
+                                dispatch({
+                                    type: FormActions.setPrice,
+                                    payload: `R$ ${item.saleInfo.listPrice.amount}`
+                                });
+                            }
+                            else {
+                                dispatch({
+                                    type: FormActions.setPrice,
+                                    payload: 'Preço Indisponível'
+                                })
+                            };
                             dispatch({
                                 type: FormActions.setDate,
                                 payload: item.volumeInfo.publishedDate

@@ -6,7 +6,6 @@ import { FormActions, useForm } from '../../context/FormContext';
 import * as C from './styles'
 import background from '../../img/bg-img.jpg'
 
-
 export const Home = () => {
 
     const { state, dispatch } = useForm();
@@ -75,7 +74,7 @@ export const Home = () => {
                                     onChange={handleSearch}
                                     className="mb-2"
                                     id="inlineFormInputBookName"
-                                    placeholder="Ex: Harry Potter"
+                                    placeholder="Ex: Sherlock Holmes"
 
                                 />
                             </Col>
