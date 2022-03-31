@@ -7,6 +7,7 @@ import * as C from './styles'
 import background from '../../img/bg-img.jpg'
 import { Footer } from '../../components/footer';
 import { Header } from '../../components/header';
+import Swal from 'sweetalert2';
 
 export const Home = () => {
 
@@ -49,14 +50,20 @@ export const Home = () => {
 
     //get State Search and call a function to attach it to base_url and get the book list
     async function searchBook() {
-        //botar ERRO se Search tiver vazio 
+        if (state.search === '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Pesquisar o quê?',
+                text: 'Escreva o livro que quer pesquisar!'
+            })
+        }
         const data = await basicFetch(state.search)
         return getInicialProps(data)
     }
 
     return (
         <>
-        <Header />
+            <Header />
             <C.Container style={
                 {
                     backgroundImage: `url(${background})`,
@@ -99,7 +106,7 @@ export const Home = () => {
                     ))}
                 </Row>
             </C.Container>
-            
+
             <Footer />
         </>
     );

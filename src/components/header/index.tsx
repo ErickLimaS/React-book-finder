@@ -1,11 +1,13 @@
 import { ChangeEvent } from 'react'
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
+import state from 'sweetalert/typings/modules/state';
+import Swal from 'sweetalert2';
 import { FormActions, useForm } from '../../context/FormContext';
 
 export const Header = () => {
     const navigate = useNavigate();
-    const { dispatch } = useForm();
+    const { state, dispatch } = useForm();
 
     //attach value from input field to State Search
     const inputSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +37,16 @@ export const Header = () => {
                         />
                         <Button variant="outline-success" onClick={
                             function clickSearch() {
-                                navigate('/search')
+                                if (state.search === '') {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Pesquisar o quê?',
+                                        text: 'Escreva o livro que quer pesquisar!'
+                                    })
+                                }
+                                else {
+                                    navigate('/search')
+                                }
                             }
                         }>Procurar</Button>
                     </Form>
