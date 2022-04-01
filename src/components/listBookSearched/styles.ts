@@ -84,4 +84,11 @@ export const Container = styled.div`
 export const Img = styled.div < { item: any }> `
 
     background-image: url(${props => props.item.volumeInfo.imageLinks !== undefined ? props.item.volumeInfo.imageLinks.thumbnail : 'https://freepikpsd.com/file/2019/10/image-not-available-png-2-Transparent-Images-Free.png'});
+
+    ${media.lessThan('xl')`
+        width: 98px!important;
+    `}
+    ${media.between('md', 'lg')`
+        width: 52px!important;
+    `}
 `

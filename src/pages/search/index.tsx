@@ -62,14 +62,15 @@ export const Search = () => {
             <Header />
             <C.Container>
                 <Row className='list-search-books'>
-                    {loading !== true ? mapBookList 
-                    : 
-                    <Spinner animation="border" role="status" variant='light'>
-                                <span className="visually-hidden">Loading...</span>
-                    </Spinner>}
+                    {loading !== true ? mapBookList
+                        :
+                        <Spinner animation="border" role="status" variant='light'>
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>}
                 </Row>
             </C.Container>
-            <Footer />
+            {/* aplies footer when theres data to show */}
+            {loading !== true ? <Footer /> : ''}
         </>
     );
 }

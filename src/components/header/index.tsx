@@ -1,3 +1,4 @@
+import { keyboardKey } from '@testing-library/user-event';
 import { ChangeEvent } from 'react'
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
@@ -25,29 +26,46 @@ export const Header = () => {
                     <Nav className='me-auto'>
                         <Nav.Link href="#">Como Funciona</Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
+                    <div className="d-flex">
                         <FormControl
                             type="search"
                             placeholder="Procurar..."
                             className="me-2"
                             aria-label="Procurar..."
                             onChange={inputSearch}
-                        />
-                        <Button variant="outline-success" onClick={
-                            function clickSearch() {
-                                if (state.search === '') {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Pesquisar o quê?',
-                                        text: 'Escreva o livro que quer pesquisar!'
-                                    })
-                                }
-                                else {
-                                    navigate('/search')
+                            onKeyUp={
+                                function keyCode(e: keyboardKey) {
+                                    if (e.keyCode === 13) {
+                                        if (state.search !== '') {
+                                            navigate('/search')
+                                        }
+                                        else {
+                                            Swal.fire(
+                                                'Pesquisar o quê?',
+                                                'Escreva o livro que quer pesquisar!','question'
+                                            )
+                                        }
+                                    }
                                 }
                             }
-                        }>Procurar</Button>
-                    </Form>
+                        />
+                        <Button variant="outline-success"
+
+                            onClick={
+                                function clickSearch() {
+                                    if (state.search === '') {
+                                        Swal.fire(
+                                            'Pesquisar o quê?',
+                                            'Escreva o livro que quer pesquisar!',
+                                            'question'
+                                        )
+                                    }
+                                    else {
+                                        navigate('/search')
+                                    }
+                                }
+                            }>Procurar</Button>
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar >

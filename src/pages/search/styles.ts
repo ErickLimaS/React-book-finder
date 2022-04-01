@@ -10,6 +10,5 @@ export const Container = styled.div`
     padding: 20px;
 
     .list-search-books{
-        height: 90vh;
     }
 `
