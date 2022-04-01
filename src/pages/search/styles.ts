@@ -9,4 +9,7 @@ export const Container = styled.div`
     background-image: linear-gradient(rgb(33,37,41), white);
     padding: 20px;
 
+    .list-search-books{
+        height: 90vh;
+    }
 `

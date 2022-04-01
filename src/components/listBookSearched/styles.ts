@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from './media'
 
 export const Container = styled.div`
     background-color: #ffff;
@@ -72,6 +73,11 @@ export const Container = styled.div`
             font-weight: 600;
         }
     }
+    
+    ${media.lessThan('xxs')`
+        margin: 0;
+        width: 300px;
+    `}
 
 `
 

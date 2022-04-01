@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import * as C from './styles'
-import { Button, Col } from "react-bootstrap";
+import { Button, Col, Placeholder } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FormActions, useForm } from "../../context/FormContext";
 
@@ -22,6 +22,7 @@ export default ({ item }: Props) => {
     return (
 
         <Col className="col-md-4">
+
             <C.Container>
                 <div className="img-title">
                     <C.Img item={item} className="div-img" style={{

@@ -1,4 +1,3 @@
-import React from 'react'
 import { } from 'react-bootstrap'
 import * as C from './styles'
 

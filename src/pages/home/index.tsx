@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ChangeEvent, useState } from 'react';
-import { Button, Col, Container, Form, FormControl, InputGroup, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Placeholder, Form, FormControl, InputGroup, Row, Spinner } from 'react-bootstrap';
 import SearchBooks from '../../components/listBookSearched/SearchBooks';
 import { FormActions, useForm } from '../../context/FormContext';
 import * as C from './styles'
@@ -13,6 +13,7 @@ export const Home = () => {
 
     const { state, dispatch } = useForm();
     const [bookList, setBookList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const API_BASE = 'https://www.googleapis.com/books/v1/volumes?q='
 
@@ -37,6 +38,7 @@ export const Home = () => {
             console.log(i);
         }
         setBookList(storage)
+        setLoading(false)
         return;
     }
 
@@ -60,6 +62,10 @@ export const Home = () => {
         const data = await basicFetch(state.search)
         return getInicialProps(data)
     }
+
+    const mapBookList = bookList.map((item, key) => (
+        <SearchBooks key={key} item={item} />))
+        ;
 
     return (
         <>
@@ -89,21 +95,35 @@ export const Home = () => {
                                 />
                             </Col>
                             <Col xs="auto">
-                                <Button type="button" className="mb-2" onClick={searchBook}>
+                                <Button type="button" href='#books' className="mb-2" onClick={searchBook}>
                                     Procurar
                                 </Button>
                             </Col>
                         </Row>
                     </Form>
                 </div>
-
+                <div className='loading-div' id='books'>
+                    {state.search !== '' ?
+                        (loading === true ?
+                            <Spinner animation="border" role="status" variant='light'>
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                            :
+                            ''
+                        )
+                        :
+                        ''
+                    }
+                </div>
             </C.Container>
 
             <C.Container>
                 <Row className='list-search-books'>
-                    {bookList.map((item, key) => (
-                        <SearchBooks key={key} item={item} />
-                    ))}
+                    {loading === false ?
+                        (mapBookList)
+                        :
+                        ''
+                    }
                 </Row>
             </C.Container>
 

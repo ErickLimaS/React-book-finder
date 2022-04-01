@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Row } from 'react-bootstrap';
+import { Row, Spinner } from 'react-bootstrap';
 import { Footer } from '../../components/footer';
 import { Header } from '../../components/header';
 import SearchBooks from '../../components/listBookSearched/SearchBooks';
@@ -10,6 +10,7 @@ import * as C from './styles'
 export const Search = () => {
     const { state, dispatch } = useForm();
     const [bookList, setBookList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const API_BASE = 'https://www.googleapis.com/books/v1/volumes?q='
 
@@ -34,6 +35,7 @@ export const Search = () => {
             console.log(i);
         }
         setBookList(storage)
+        setLoading(false)
         return;
     }
     async function searchBook() {
@@ -51,15 +53,20 @@ export const Search = () => {
         searchBook()
     }
 
+    const mapBookList = bookList.map((item, key) => (
+        <SearchBooks key={key} item={item} />
+    ))
 
     return (
         <>
             <Header />
             <C.Container>
                 <Row className='list-search-books'>
-                    {bookList.map((item, key) => (
-                        <SearchBooks key={key} item={item} />
-                    ))}
+                    {loading !== true ? mapBookList 
+                    : 
+                    <Spinner animation="border" role="status" variant='light'>
+                                <span className="visually-hidden">Loading...</span>
+                    </Spinner>}
                 </Row>
             </C.Container>
             <Footer />

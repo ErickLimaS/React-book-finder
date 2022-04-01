@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from './media'
 
 // box-shadow: inset 0px 20px 20px 0px;
 export const Container = styled.div`
@@ -8,7 +9,6 @@ export const Container = styled.div`
     justify-content: center;
     background-image: linear-gradient(rgb(33,37,41), white);
     
-
     div.main-search-book {
         display: flex;
         flex-direction: column;
@@ -16,7 +16,7 @@ export const Container = styled.div`
         justify-content: center;
         height: 60vh;
         filter: blur(0);
-        margin: 10vh;
+        margin: 5vh;
         padding: 10vh;
         background-color: #ffffff69;
         border-radius: 10px;
@@ -31,5 +31,17 @@ export const Container = styled.div`
     .list-search-books {
         margin: 0 50px;
     }
+
+    div.loading-div {
+        height: 80px ;
+
+    }
+
+    ${media.lessThan('sm')`
+        
+    div.main-search-book {
+        margin: 10%;
+        padding: 10%;
+    `}
     
 `

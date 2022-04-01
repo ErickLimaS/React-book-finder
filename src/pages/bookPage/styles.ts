@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from './media'
 
 export const Container = styled.div`
 
@@ -72,7 +73,36 @@ export const Container = styled.div`
             }
         }
     }
-}
+    ${media.lessThan('sm')`
+    .img-and-info {
+        flex-direction: column;
+        align-items: center;
+        width: inherit;
+    }
+
+    .div-img {
+        align-self: center;
+    }
+
+
+    .all-Book-Info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: inherit;
+        margin: 10px 20px;
+    }
+
+    .book-details{
+        display: flex;
+        flex-direction: column!important;
+    }
+    
+    .all-details {
+        margin: 20px 10px;
+    }
+    `
+    }
 `
 export const Price = styled.h2<{ price: any }>`
 

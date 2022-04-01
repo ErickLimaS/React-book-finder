@@ -1,7 +1,6 @@
 import { ChangeEvent } from 'react'
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
-import state from 'sweetalert/typings/modules/state';
 import Swal from 'sweetalert2';
 import { FormActions, useForm } from '../../context/FormContext';
 
@@ -24,8 +23,7 @@ export const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className='me-auto'>
-                        <Nav.Link href="#deets">Como Funciona</Nav.Link>
-
+                        <Nav.Link href="#">Como Funciona</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <FormControl
