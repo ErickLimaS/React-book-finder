@@ -15,7 +15,8 @@ export const BookPage = ({ price }: Props) => {
 
     //makes price with ',' instead of '.'
     price = (state.price)
-    var priceFormated = price.replace(".", ",");
+//     var priceFormated = price.replace(".", ",");
+    var priceFormated = price.toFixed(2).replace(".", ",");
 
     const imgBook = `http://books.google.com/books/content?id=${state.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
