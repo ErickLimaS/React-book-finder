@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { media } from './media'
 
 export const Container = styled.div`
+    height: 95%;
     background-color: #ffff;
     display: flex;
     flex-direction: column;

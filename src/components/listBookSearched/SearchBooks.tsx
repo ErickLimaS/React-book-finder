@@ -103,7 +103,6 @@ export default ({ item }: Props) => {
                                 type: FormActions.setLanguage,
                                 payload: item.volumeInfo.language
                             });
-                            console.log(state.isbn)
                             navigate('/book')
                         }
                     }>

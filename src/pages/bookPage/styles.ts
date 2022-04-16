@@ -37,14 +37,7 @@ export const Container = styled.div`
         }
 
         .buy-button{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            a {
-                border-radius: 20px;
-                width: 300px;
-            }
+            
         }
 
     }
@@ -112,4 +105,19 @@ export const Price = styled.h2<{ price: any }>`
         display: ${props => props.price === 'Preço Indisponível' ? 'none' : 'initial'}
     }
 
+`
+export const DivButton = styled.div<{ price: any }>`
+    flex-direction: column;
+    align-items: center;
+
+    a {
+          border-radius: 20px;
+     width: 300px;
+    }
+    display: ${props => props.price === 'Preço Indisponível' ? 'none' : 'flex'}
+  
+`
+
+export const Description = styled.p<{ description: any }>`
+    display: ${props => !props.description ? 'block' : 'none'}
 `

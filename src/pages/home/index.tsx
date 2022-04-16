@@ -27,17 +27,10 @@ export const Home = () => {
     //get the books with correspondent url 
 
     function getInicialProps(value: any) {
-        console.log(value)
-        const aux = value.data.items.length
-        let storage: any = [aux]
-        console.log(aux + '- length')
-        let i = 0;
-        while (i < aux) {
-            storage[i] = value.data.items[i]; //book details
-            console.log(storage);
-            i++;
-            console.log(i);
-        }
+        // console.log(value)
+        // const aux = value.data.items.length
+        let storage: any = value.data.items
+        // console.log(value.data.items)
         setBookList(storage)
         setLoading(false)
         return;
@@ -104,7 +97,7 @@ export const Home = () => {
                             </Button>
                         </Col>
                     </Row>
-                    
+
                 </div>
                 <div className='loading-div' id='books'>
                     {state.search !== '' ?

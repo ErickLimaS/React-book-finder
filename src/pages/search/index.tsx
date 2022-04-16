@@ -23,17 +23,8 @@ export const Search = () => {
     //get the books with correspondent url 
 
     function getInicialProps(value: any) {
-        console.log(value)
-        const aux = value.data.items.length
-        let storage: any = [aux]
-        console.log(aux + '- length')
-        let i = 0;
-        while (i < aux) {
-            storage[i] = value.data.items[i]; //book details
-            console.log(storage);
-            i++;
-            console.log(i);
-        }
+        let storage: any = value.data.items
+        // console.log(storage)
         setBookList(storage)
         setLoading(false)
         return;

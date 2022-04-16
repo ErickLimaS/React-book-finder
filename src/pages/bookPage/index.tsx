@@ -9,14 +9,18 @@ type Props = {
     price: any;
 }
 
-
 export const BookPage = ({ price }: Props) => {
     const { state } = useForm();
 
-    //makes price with ',' instead of '.'
-    price = (state.price)
-//     var priceFormated = price.replace(".", ",");
-    var priceFormated = price.toFixed(2).replace(".", ",");
+    let priceFormated: any;
+    if (state.price !== 'Preço Indisponível') {
+        const fixedPrice = Number(state.price.split(' ')[1]).toFixed(2)
+        priceFormated = `R$ ${fixedPrice.replace(".", ",")}`;
+    }
+    else {
+        priceFormated = state.price
+    }
+    // console.log(state.price)
 
     const imgBook = `http://books.google.com/books/content?id=${state.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
@@ -45,16 +49,19 @@ export const BookPage = ({ price }: Props) => {
                             <p>Por <span>{state.author}</span></p>
                         </div>
                         <hr />
-                        <C.Price price={price}>{priceFormated} <small>na Google Play</small></C.Price>
-                        <div className="buy-button">
+                        <C.Price price={priceFormated}>{priceFormated} <small>na Google Play</small></C.Price>
+                        <C.DivButton price={priceFormated} className="buy-button">
                             <Button href={state.buyLink} target='_blank' rel='noreferrer'>Comprar Agora</Button>
-                        </div>
+                        </C.DivButton>
                     </div>
                 </div>
                 <hr />
                 <div className="all-details">
                     <h3><b>Descrição</b></h3>
                     <p className="description">{state.description}</p>
+                    <C.Description description={state.description} className="empty-description">
+                        Descrição Não Disponível.
+                    </C.Description>
                     <hr />
                     <div className="book-details">
                         <div>
