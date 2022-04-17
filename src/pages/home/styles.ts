@@ -35,6 +35,31 @@ export const Container = styled.div`
     div.loading-div {
         height: 80px ;
 
+        h2{
+            font-size: 28px;
+            padding: 2px 5px;
+            font-weight: 400;
+            border-radius: 2px;
+            background-color: #0000006e;
+            transition: all ease 250ms;
+            color: #FFF;
+            animation: showingh2 0.5s;
+
+            span {
+                font-size: 30px;
+                font-weight: 500;
+            }
+        }
+        @keyframes showingh2{
+            from{
+                background-color: #00000000;
+                color: #fff0;
+            }
+            to{
+                background-color: #00000052;
+                color: #FFF;
+            }
+        }
     }
 
     ${media.lessThan('sm')`

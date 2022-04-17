@@ -45,8 +45,8 @@ export const Container = styled.div`
     }
 
     .button-know:hover{
-        
-        background-color: #cfcfcf;
+        background-color: #c0c0c0;
+        color: #303030;
     }
 
     .button-want {

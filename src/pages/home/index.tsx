@@ -106,7 +106,7 @@ export const Home = () => {
                                 <span className="visually-hidden">Loading...</span>
                             </Spinner>
                             :
-                            ''
+                            <h2>Resultados para <span>{state.search}</span></h2>
                         )
                         :
                         ''
