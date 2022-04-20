@@ -1,6 +1,6 @@
 # Book Finder - Página que permite encontrar livros pela API do Google
 
-Criada usando React e Typescript, ela usa a API do Google Books para ter acesso aos livros. E digitando o que você procura, será mostrado uma série de resultados e outros detalhes do livro requisitado. 
+Criada usando React e Typescript, criei um site onde é usado a API do Google Books para ter acesso aos livros. É possível digitar o livro que você procura, e será mostrado uma série de resultados e outros detalhes relacionado a pesquisa. Há a opção de saber mais sobre o livro e ser redirecionado ao site Google Books para a compra.
 
 ## Dependencies usadas:
 
